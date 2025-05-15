@@ -20,6 +20,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { CourseEnrollButton } from "@/components/CourseEnrollButton";
 
 // This would typically come from a database or API
 const coursesData = {
@@ -447,9 +448,10 @@ export default async function CourseDetails({
               <div className="mb-6">
                 <p className="text-3xl font-bold mb-2">{course.price} Birr</p>
                 <p className="text-gray-600 mb-4">Full lifetime access</p>
-                <Button className="w-full mb-3 bg-orange-500 hover:bg-orange-600 text-lg py-6">
-                  Enroll Now
-                </Button>
+                <CourseEnrollButton
+                  courseTitle={course.title}
+                  paymentOptions={course.paymentOptions}
+                />
                 <Button variant="outline" className="w-full text-lg py-6">
                   Try Free Preview
                 </Button>

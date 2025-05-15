@@ -4,6 +4,8 @@ import { ArrowRight, Laptop, Code, BookOpen } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { AboutSection } from "@/components/AboutSection";
 
 export default function Home() {
   const features = [
@@ -83,7 +85,7 @@ export default function Home() {
           <img
             src="/student-coding.png" // Replace with actual path
             alt="Student coding"
-            className="w-50% h-full object-cover opacity-70"
+            className="w-60% h-full object-cover opacity-70"
           />
         </div>
 
@@ -187,8 +189,6 @@ export default function Home() {
         </section>
 
         {/* Features Section */}
-        {/* Features Section */}
-        {/* Features Section */}
         <div className="py-20 bg-gray-100 px-[5%] pl-[25%]">
           <section>
             <div className="container mx-auto">
@@ -266,45 +266,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* About Section */}
-      <section
-        id="about"
-        className="py-16 bg-white border-t border-b border-gray-100"
-      >
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center mb-8">
-            <div className="inline-block px-6 py-2 border border-blue-200 rounded-full text-blue-600 text-sm font-medium mb-4">
-              About Us
-            </div>
-            <h2 className="text-3xl font-bold">Who We Are</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <Image
-                src="/backend.jpg"
-                alt="Coding environment"
-                width={500}
-                height={400}
-                className="rounded-lg shadow-lg"
-              />
-            </div>
-            <div className="space-y-6">
-              <h2 className="text-3xl font-bold">
-                From Curiosity To Code - The Next Tech
-              </h2>
-              <p className="text-gray-600">
-                We are a team of passionate developers and educators committed
-                to helping you master coding. Our program focuses on hands-on
-                learning and real-world applications. We offer a comprehensive
-                curriculum, personalized mentorship, and a supportive community
-                to ensure your success in the tech industry.
-              </p>
-              <Button className="bg-blue-500 hover:bg-blue-600">Join Us</Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <AboutSection />
 
       {/* Testimonials Section */}
       <section className="py-16 bg-white">
