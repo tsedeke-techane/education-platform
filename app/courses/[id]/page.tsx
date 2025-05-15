@@ -1,11 +1,25 @@
-import Image from "next/image"
-import Link from "next/link"
-import { ArrowLeft, Clock, Calendar, Award, CheckCircle, BookOpen, DollarSign, Users } from "lucide-react"
+import Image from "next/image";
+import Link from "next/link";
+import {
+  ArrowLeft,
+  Clock,
+  Calendar,
+  Award,
+  CheckCircle,
+  BookOpen,
+  DollarSign,
+  Users,
+} from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Card, CardContent } from "@/components/ui/card"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 // This would typically come from a database or API
 const coursesData = {
@@ -72,7 +86,13 @@ const coursesData = {
       },
       {
         title: "Module 4: Responsive Design",
-        lessons: ["Mobile-First Design", "Media Queries", "Flexbox", "CSS Grid", "Responsive Images and Media"],
+        lessons: [
+          "Mobile-First Design",
+          "Media Queries",
+          "Flexbox",
+          "CSS Grid",
+          "Responsive Images and Media",
+        ],
       },
       {
         title: "Module 5: JavaScript Fundamentals",
@@ -306,7 +326,11 @@ const coursesData = {
       },
       {
         title: "Module 4: Advanced Topics",
-        lessons: ["Graph Algorithms (DFS, BFS)", "Complexity Analysis (Big O Notation)", "Greedy Algorithms"],
+        lessons: [
+          "Graph Algorithms (DFS, BFS)",
+          "Complexity Analysis (Big O Notation)",
+          "Greedy Algorithms",
+        ],
       },
       {
         title: "Module 5: Final Project",
@@ -339,35 +363,51 @@ const coursesData = {
       },
     ],
   },
-}
+};
 
-export default function CourseDetails({ params }: { params: { id: string } }) {
-  const courseId = params.id
-  const course = coursesData[courseId as keyof typeof coursesData]
+export default async function CourseDetails({
+  params,
+}: {
+  params: { id: string };
+}) {
+  // In a real app with dynamic data, you would fetch the data here
+  // For now, we'll use the static data from the file
+  const courseId = params.id;
 
-  if (!course) {
+  // Check if course exists in our data
+  if (!(courseId in coursesData)) {
     return (
       <div className="container mx-auto px-4 py-16 text-center">
         <h1 className="text-2xl font-bold mb-4">Course not found</h1>
-        <p className="mb-8">The course you're looking for doesn't exist or has been removed.</p>
+        <p className="mb-8">
+          The course you're looking for doesn't exist or has been removed.
+        </p>
         <Link href="/">
           <Button>Return to Home</Button>
         </Link>
       </div>
-    )
+    );
   }
+
+  // If course exists, we can safely access it
+  const course = coursesData[courseId as keyof typeof coursesData];
 
   return (
     <main className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
         <div className="container mx-auto px-4 md:px-6">
-          <Link href="/" className="inline-flex items-center text-white mb-8 hover:underline">
+          <Link
+            href="/"
+            className="inline-flex items-center text-white mb-8 hover:underline"
+          >
             <ArrowLeft className="mr-2 h-4 w-4" /> Back to Home
           </Link>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div>
-              <h1 className="text-3xl md:text-4xl font-bold mb-4">{course.title}</h1>
+              <h1 className="text-3xl md:text-4xl font-bold mb-4">
+                {course.title}
+              </h1>
               <p className="text-xl mb-6">{course.subtitle}</p>
               <div className="flex flex-wrap gap-4 mb-6">
                 <div className="flex items-center">
@@ -397,7 +437,9 @@ export default function CourseDetails({ params }: { params: { id: string } }) {
                 />
                 <div>
                   <p className="font-medium">{course.instructor.name}</p>
-                  <p className="text-sm text-blue-100">{course.instructor.role}</p>
+                  <p className="text-sm text-blue-100">
+                    {course.instructor.role}
+                  </p>
                 </div>
               </div>
             </div>
@@ -405,14 +447,20 @@ export default function CourseDetails({ params }: { params: { id: string } }) {
               <div className="mb-6">
                 <p className="text-3xl font-bold mb-2">{course.price} Birr</p>
                 <p className="text-gray-600 mb-4">Full lifetime access</p>
-                <Button className="w-full mb-3 bg-orange-500 hover:bg-orange-600 text-lg py-6">Enroll Now</Button>
+                <Button className="w-full mb-3 bg-orange-500 hover:bg-orange-600 text-lg py-6">
+                  Enroll Now
+                </Button>
                 <Button variant="outline" className="w-full text-lg py-6">
                   Try Free Preview
                 </Button>
               </div>
               <div className="border-t pt-4">
-                <p className="text-center text-sm text-gray-600 mb-2">7-Day Money-Back Guarantee</p>
-                <p className="text-center text-sm text-gray-600">Full lifetime access</p>
+                <p className="text-center text-sm text-gray-600 mb-2">
+                  7-Day Money-Back Guarantee
+                </p>
+                <p className="text-center text-sm text-gray-600">
+                  Full lifetime access
+                </p>
               </div>
             </div>
           </div>
@@ -461,7 +509,11 @@ export default function CourseDetails({ params }: { params: { id: string } }) {
                 <h2 className="text-2xl font-bold">Course Curriculum</h2>
                 <div className="text-gray-600">
                   <BookOpen className="inline mr-2 h-5 w-5" />
-                  {course.curriculum.reduce((total, module) => total + module.lessons.length, 0)} lessons
+                  {course.curriculum.reduce(
+                    (total, module) => total + module.lessons.length,
+                    0
+                  )}{" "}
+                  lessons
                 </div>
               </div>
 
@@ -471,13 +523,18 @@ export default function CourseDetails({ params }: { params: { id: string } }) {
                     <AccordionTrigger className="text-left">
                       <div>
                         <span className="font-medium">{module.title}</span>
-                        <p className="text-sm text-gray-600">{module.lessons.length} lessons</p>
+                        <p className="text-sm text-gray-600">
+                          {module.lessons.length} lessons
+                        </p>
                       </div>
                     </AccordionTrigger>
                     <AccordionContent>
                       <ul className="space-y-3 pt-2">
                         {module.lessons.map((lesson, lessonIndex) => (
-                          <li key={lessonIndex} className="flex items-center p-2 hover:bg-gray-50 rounded">
+                          <li
+                            key={lessonIndex}
+                            className="flex items-center p-2 hover:bg-gray-50 rounded"
+                          >
                             <div className="h-8 w-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mr-3">
                               {lessonIndex + 1}
                             </div>
@@ -503,7 +560,9 @@ export default function CourseDetails({ params }: { params: { id: string } }) {
                   className="rounded-full"
                 />
                 <div>
-                  <h2 className="text-2xl font-bold mb-2">{course.instructor.name}</h2>
+                  <h2 className="text-2xl font-bold mb-2">
+                    {course.instructor.name}
+                  </h2>
                   <p className="text-gray-600 mb-4">{course.instructor.role}</p>
                   <p className="text-gray-700">{course.instructor.bio}</p>
                 </div>
@@ -516,10 +575,15 @@ export default function CourseDetails({ params }: { params: { id: string } }) {
               <h2 className="text-2xl font-bold mb-6">Payment Options</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {course.paymentOptions.map((option, index) => (
-                  <Card key={index} className="border-2 hover:border-blue-500 transition-all">
+                  <Card
+                    key={index}
+                    className="border-2 hover:border-blue-500 transition-all"
+                  >
                     <CardContent className="p-6">
                       <h3 className="text-xl font-bold mb-2">{option.name}</h3>
-                      <p className="text-3xl font-bold text-blue-600 mb-4">{option.price}</p>
+                      <p className="text-3xl font-bold text-blue-600 mb-4">
+                        {option.price}
+                      </p>
                       <ul className="space-y-3 mb-6">
                         {option.features.map((feature, featureIndex) => (
                           <li key={featureIndex} className="flex items-start">
@@ -541,5 +605,5 @@ export default function CourseDetails({ params }: { params: { id: string } }) {
         </Tabs>
       </div>
     </main>
-  )
+  );
 }
