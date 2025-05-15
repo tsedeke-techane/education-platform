@@ -187,30 +187,34 @@ export default function Home() {
         </section>
 
         {/* Features Section */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {features.map((feature, index) => (
-                <Card
-                  key={index}
-                  className="border border-gray-100 shadow-sm transition-all duration-300 transform hover:scale-105 hover:bg-blue-500 hover:shadow-lg group"
-                >
-                  <CardContent className="p-6 text-center">
-                    <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-blue-50 group-hover:bg-white transition-colors">
-                      {feature.icon}
-                    </div>
-                    <h3 className="text-lg font-semibold mb-2 text-gray-900 group-hover:text-white transition-colors">
-                      {feature.title}
-                    </h3>
-                    <p className="text-gray-600 group-hover:text-blue-100 transition-colors">
-                      {feature.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              ))}
+        {/* Features Section */}
+        {/* Features Section */}
+        <div className="py-20 bg-gray-100 px-[5%] pl-[25%]">
+          <section>
+            <div className="container mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+                {features.map((feature, index) => (
+                  <Card
+                    key={index}
+                    className="bg-white border border-gray-200 rounded-xl shadow-md transition-transform duration-300 transform hover:scale-105"
+                  >
+                    <CardContent className="p-8 text-center">
+                      <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-blue-500 text-white text-2xl">
+                        {feature.icon}
+                      </div>
+                      <h3 className="text-xl font-semibold mb-3 text-gray-900">
+                        {feature.title}
+                      </h3>
+                      <p className="text-gray-600 leading-relaxed">
+                        {feature.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
       </div>
 
       {/* Courses Section */}
